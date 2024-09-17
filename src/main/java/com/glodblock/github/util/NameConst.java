@@ -49,6 +49,7 @@ public class NameConst {
     public static final String ITEM_WIRELESS_INTERFACE_TERMINAL = "wireless_interface_terminal";
     public static final String ITEM_WIRELESS_LEVEL_TERMINAL = "wireless_level_terminal";
     public static final String ITEM_WIRELESS_ULTRA_TERMINAL = "wireless_ultra_terminal";
+    public static final String ITEM_WIRELESS_BATTLE_STATION_TERMINAL = "wireless_battle_station_terminal";
     public static final String ITEM_WIRELESS_FLUID_PATTERN_TERMINAL = "wireless_fluid_pattern_terminal";
     public static final String ITEM_FLUID_PART = "fluid_part";
     public static final String ITEM_FLUID_STORAGE_HOUSING = "fluid_storage_housing";

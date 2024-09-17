@@ -4,65 +4,10 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.glodblock.github.client.gui.*;
+import com.glodblock.github.client.gui.container.*;
 import net.minecraft.entity.player.EntityPlayer;
 
-import com.glodblock.github.client.gui.GuiCraftingStatus;
-import com.glodblock.github.client.gui.GuiDualInterface;
-import com.glodblock.github.client.gui.GuiEssentiaTerminal;
-import com.glodblock.github.client.gui.GuiFCPriority;
-import com.glodblock.github.client.gui.GuiFluidAutoFiller;
-import com.glodblock.github.client.gui.GuiFluidCraftAmount;
-import com.glodblock.github.client.gui.GuiFluidCraftConfirm;
-import com.glodblock.github.client.gui.GuiFluidCraftingWireless;
-import com.glodblock.github.client.gui.GuiFluidIO;
-import com.glodblock.github.client.gui.GuiFluidInterface;
-import com.glodblock.github.client.gui.GuiFluidLevelEmitter;
-import com.glodblock.github.client.gui.GuiFluidOptimizePatterns;
-import com.glodblock.github.client.gui.GuiFluidPacketDecoder;
-import com.glodblock.github.client.gui.GuiFluidPatternEncoder;
-import com.glodblock.github.client.gui.GuiFluidPatternExWireless;
-import com.glodblock.github.client.gui.GuiFluidPatternTerminal;
-import com.glodblock.github.client.gui.GuiFluidPatternTerminalEx;
-import com.glodblock.github.client.gui.GuiFluidPatternWireless;
-import com.glodblock.github.client.gui.GuiFluidPortableCell;
-import com.glodblock.github.client.gui.GuiFluidStorageBus;
-import com.glodblock.github.client.gui.GuiFluidTerminal;
-import com.glodblock.github.client.gui.GuiIngredientBuffer;
-import com.glodblock.github.client.gui.GuiInterfaceWireless;
-import com.glodblock.github.client.gui.GuiLargeIngredientBuffer;
-import com.glodblock.github.client.gui.GuiLevelMaintainer;
-import com.glodblock.github.client.gui.GuiLevelTerminal;
-import com.glodblock.github.client.gui.GuiLevelWireless;
-import com.glodblock.github.client.gui.GuiOCPatternEditor;
-import com.glodblock.github.client.gui.GuiPatternValueAmount;
-import com.glodblock.github.client.gui.GuiRenamer;
-import com.glodblock.github.client.gui.container.ContainerCraftingWireless;
-import com.glodblock.github.client.gui.container.ContainerDualInterface;
-import com.glodblock.github.client.gui.container.ContainerEssentiaMonitor;
-import com.glodblock.github.client.gui.container.ContainerFluidAutoFiller;
-import com.glodblock.github.client.gui.container.ContainerFluidCraftConfirm;
-import com.glodblock.github.client.gui.container.ContainerFluidIO;
-import com.glodblock.github.client.gui.container.ContainerFluidInterface;
-import com.glodblock.github.client.gui.container.ContainerFluidLevelEmitter;
-import com.glodblock.github.client.gui.container.ContainerFluidMonitor;
-import com.glodblock.github.client.gui.container.ContainerFluidOptimizePatterns;
-import com.glodblock.github.client.gui.container.ContainerFluidPacketDecoder;
-import com.glodblock.github.client.gui.container.ContainerFluidPatternEncoder;
-import com.glodblock.github.client.gui.container.ContainerFluidPatternExWireless;
-import com.glodblock.github.client.gui.container.ContainerFluidPatternTerminal;
-import com.glodblock.github.client.gui.container.ContainerFluidPatternTerminalEx;
-import com.glodblock.github.client.gui.container.ContainerFluidPatternWireless;
-import com.glodblock.github.client.gui.container.ContainerFluidPortableCell;
-import com.glodblock.github.client.gui.container.ContainerFluidStorageBus;
-import com.glodblock.github.client.gui.container.ContainerIngredientBuffer;
-import com.glodblock.github.client.gui.container.ContainerInterfaceWireless;
-import com.glodblock.github.client.gui.container.ContainerLargeIngredientBuffer;
-import com.glodblock.github.client.gui.container.ContainerLevelMaintainer;
-import com.glodblock.github.client.gui.container.ContainerLevelTerminal;
-import com.glodblock.github.client.gui.container.ContainerLevelWireless;
-import com.glodblock.github.client.gui.container.ContainerOCPatternEditor;
-import com.glodblock.github.client.gui.container.ContainerPatternValueAmount;
-import com.glodblock.github.client.gui.container.ContainerRenamer;
 import com.glodblock.github.common.parts.PartFluidLevelEmitter;
 import com.glodblock.github.common.parts.PartFluidStorageBus;
 import com.glodblock.github.common.parts.base.FCPart;
@@ -383,6 +328,20 @@ public enum GuiType {
             return new GuiFluidCraftingWireless(player.inventory, inv);
         }
     }),
+
+    WIRELESS_BATTLE_STATION_MAIN_TERMINAL(new ItemGuiFactory<>(IWirelessTerminal.class) {
+
+        @Override
+        protected Object createServerGui(EntityPlayer player, IWirelessTerminal inv) {
+            return new ContainerCraftingWireless(player.inventory, inv);
+        }
+
+        @Override
+        protected Object createClientGui(EntityPlayer player, IWirelessTerminal inv) {
+            return new GuiBattleStationWireless(player.inventory, inv);
+        }
+    }),
+
 
     FLUID_PATTERN_TERMINAL(new PartGuiFactory<>(ITerminalHost.class) {
 
